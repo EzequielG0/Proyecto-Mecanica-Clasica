@@ -186,13 +186,13 @@ def elegir_parametros_integracion(eps, p, GM, R_central, es_tierra):
             r_impacto = R_central
     elif abs(eps - 1.0) < 3e-4:
         v_p   = np.sqrt(2.0 * GM / (p / 2.0))
-        t_max = 8.0 * p / v_p   # ← aumento leve (más recorrido)
+        t_max = 8.0 * p / v_p  
         dt    = t_max / 80_000
-        r_esc = 10.0 * p        # ← mayor rango para ver apertura
+        r_esc = 10.0 * p     
     else:
-        v_inf = np.sqrt(GM * (eps**2 - 1.0) / p)  # ← corregido
+        v_inf = np.sqrt(GM * (eps**2 - 1.0) / p) 
         r_esc = 10.0 * p
-        t_max = r_esc / v_inf * 1.2   # ← CLAVE: tiempo físico correcto
+        t_max = r_esc / v_inf * 1.2   
         dt    = t_max / 80_000
         if R_central > 0 and p / (1.0 + eps) < R_central:
             r_impacto = R_central
